@@ -272,6 +272,36 @@ test('the standalone build is reproducible', () => {
   });
 });
 
+test('the bundle freshness check does not call a missing artifact stale', () => {
+  // dist/ is gitignored, so a fresh clone — and therefore CI — has no bundle
+  // to compare against. Absent is not stale: failing there turns a freshness
+  // check into a demand that everyone build first. This is exactly how the
+  // first CI run went red after passing locally, where dist/ existed.
+  withTempDir('ct-build-absent-', (dir) => {
+    const result = run('tools/build-standalone.mjs', ['--check', '--out', join(dir, 'absent.html')]);
+    assert.equal(
+      result.status,
+      0,
+      `a missing artifact was treated as an error:\n${result.stdout}${result.stderr}`
+    );
+    assert.match(result.stdout, /not built here/, 'the skip should say why it skipped');
+  });
+});
+
+test('the bundle freshness check still catches a genuinely stale artifact', () => {
+  // The other half of the same rule: skipping when absent must not degrade
+  // into skipping when present-but-wrong.
+  withTempDir('ct-build-stale-', (dir) => {
+    const outPath = join(dir, 'stale.html');
+    assert.equal(run('tools/build-standalone.mjs', ['--out', outPath]).status, 0);
+    writeFileSync(outPath, '<!-- not what the bundler would produce -->', 'utf8');
+
+    const result = run('tools/build-standalone.mjs', ['--check', '--out', outPath]);
+    assert.notEqual(result.status, 0, 'a stale artifact was reported as up to date');
+    assert.match(result.stdout + result.stderr, /STALE/);
+  });
+});
+
 /* ═════════════════════════════ compliance scanner ══════════════════════════ */
 
 test('the compliance scan passes on the repository as committed', () => {

@@ -304,8 +304,11 @@ function main() {
 
   if (checkOnly) {
     if (!existsSync(outPath)) {
-      console.error(`  MISSING: ${outPath}`);
-      process.exitCode = 1;
+      // Nothing was built here, so nothing can be stale. dist/ is gitignored,
+      // which makes this the *normal* state of a fresh clone — treating it as
+      // failure would turn a freshness check into a demand that everyone build
+      // first, and it would break the moment this runs on CI.
+      console.log(`  not built here, nothing to compare: ${outPath}`);
       return;
     }
     if (readFileSync(outPath, 'utf8') !== html) {

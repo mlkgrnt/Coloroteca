@@ -51,7 +51,16 @@ jobs:
       - name: Check that the bundled data is redistributable
         run: npm run check
 
-      # Demo libraries and the single-file bundle are generated. If a change
-      # left them stale, the shipped artifact would not match the source.
-      - name: Check that generated artifacts are current
+      # The demo libraries and web/demo-libraries.js are generated *and*
+      # committed, so regenerating them here is a genuine comparison: if either
+      # drifted from its generator, this fails.
+      - name: Check that committed generated data is current
         run: npm run build:docs
+
+      # dist/ is gitignored, so a fresh clone has no bundle for --check to
+      # judge — and it correctly declines to call a missing artifact stale.
+      # Build it instead: this is what proves the bundler still runs over the
+      # whole module graph, and that no import has crept in that it cannot
+      # inline. Freshness of dist/ is a local concern, not a CI one.
+      - name: Build the single-file bundle
+        run: npm run build
