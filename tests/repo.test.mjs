@@ -349,6 +349,30 @@ test('the compliance scanner catches a colour-book binary', () => {
   }
 });
 
+test('the compliance scanner does not flag prose that discusses a colour system', () => {
+  // The swatch-table rule keys on lines that pair a code with a value, not on
+  // how often a system is named. Without this test the rule would keep passing
+  // its own violation cases while quietly decaying into a mention counter,
+  // which would flag any document that argues about licensing.
+  const fixtureDir = join(ROOT, 'tests', '_scan_fixture');
+  try {
+    mkdirSync(fixtureDir, { recursive: true });
+
+    const lines = ['# Notes on colour systems', ''];
+    for (let i = 0; i < 20; i++) {
+      lines.push(`Pantone and Freetone both publish numbered systems; see note ${i}.`);
+    }
+    // Hex values, but never on a line that also carries a colour code.
+    lines.push('', 'Examples:', '', '#e4002b', '#ff6b6b', '#00a0b0', '#f47983', '');
+    writeFileSync(join(fixtureDir, 'prose.md'), lines.join('\n'), 'utf8');
+
+    const result = run('tools/scan-protected.mjs');
+    assert.equal(result.status, 0, `prose was flagged as a swatch table:\n${result.stdout}`);
+  } finally {
+    rmSync(fixtureDir, { recursive: true, force: true });
+  }
+});
+
 /* ═══════════════════════════ user-library directory ════════════════════════ */
 
 /**

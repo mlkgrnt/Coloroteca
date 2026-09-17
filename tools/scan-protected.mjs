@@ -65,12 +65,14 @@ const PROPRIETARY_SYSTEMS = [/\bpantone\b/i, /\bfreetone\b/i, /\bRAL\s*classic\b
 /**
  * A pasted swatch table has a shape: line after line pairing a colour code with
  * a colour value. Prose does not, even when it discusses Pantone at length and
- * shows a handful of examples. So the decisive signal is the number of lines
- * that pair the two, not the total count of either.
+ * quotes example values. So the decisive signal is the number of lines that
+ * pair the two, not the total count of either.
  *
- * docs/PLAN.md is why this matters. It mentions Pantone 18 times and contains 21
- * hex values — as illustrations in an argument about licensing. Counting those
- * separately flags it; counting paired lines does not.
+ * That distinction is what keeps this check usable rather than obnoxious: a
+ * document arguing about licensing will name Pantone repeatedly and show
+ * sample values, and must not be flagged for doing so.
+ * tests/repo.test.mjs plants exactly that shape and asserts it passes, so this
+ * rule cannot quietly degrade into a mention counter.
  */
 const PAIRED_LINE = new RegExp(
   String.raw`(#[0-9a-f]{6}\b[^\n]{0,40}?\b\d{2,4}\s*(?:C|U|TCX|TPG)\b)` +

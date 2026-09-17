@@ -23,6 +23,11 @@ dist/
 # whichever machine happened to be used.
 .workbuddy/
 
+# Internal design notes. A working document, not part of the published project:
+# it holds the licensing research, rejected options and decision log, which are
+# useful while building and noise for anyone reading the repository.
+PLAN.md
+
 # Tooling
 node_modules/
 *.log
