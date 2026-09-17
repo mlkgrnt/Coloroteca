@@ -6,13 +6,21 @@
  * the colour books the user is licensed for, and an .acb carries real ink Lab
  * values rather than a third-party hex approximation.
  *
- * Big-endian throughout. Two details there are easy to get wrong and would
+ * Big-endian throughout. Three details there are easy to get wrong and would
  * corrupt everything downstream:
  *
  *   1. Strings are length-prefixed with a **32-bit** count (most Adobe
  *      binary formats use 16-bit), followed by UTF-16BE characters with no
  *      terminator.
  *   2. Colour components are **one byte each**, not 16-bit words.
+ *   3. Each record carries **two** identifiers and they are not
+ *      interchangeable. The length-prefixed string is the swatch's real name
+ *      ("106", "Yellow", "Orange 021"); the six bytes that follow are
+ *      Adobe's internal slot id, six characters wide and usually a serial
+ *      rather than a name. In the shipped PANTONE+ Solid Coated book those
+ *      slots read "0061SC", "0064SC", … — page and position, not colour — and
+ *      only for named swatches do they abbreviate ("Yellow" -> "YELLOC").
+ *      The name is the identifier; use the slot id only as a fallback.
  *
  * Lab in an .acb is D50 (the print reference), so it is adapted to D65 on read.
  * The values are also quantised to a single byte per channel, which is coarser
@@ -89,8 +97,12 @@ function cleanAdobeString(s, trim = true) {
   return trim ? expanded.trim() : expanded;
 }
 
-/** 6 raw bytes to a trimmed code string. */
-function decodeCode(bytes) {
+/**
+ * The six bytes after the name are Adobe's internal slot id — a fixed-width
+ * serial, not a colour code. Kept only as a fallback for a record whose name
+ * field turns out to be empty or whitespace.
+ */
+function decodeSlotId(bytes) {
   let s = '';
   for (let i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
   return s.replace(/\u0000/g, '').trim();
@@ -182,9 +194,8 @@ export function parseAcb(input, options = {}) {
       break;
     }
 
-    const codeBytes = u8.subarray(pos, pos + 6);
+    const slotId = decodeSlotId(u8.subarray(pos, pos + 6));
     pos += 6;
-    const code = decodeCode(codeBytes);
 
     let hex = null;
     let rgb = null;
@@ -233,7 +244,10 @@ export function parseAcb(input, options = {}) {
       }
     }
 
-    const entry = { code: code || name, name: null, hex };
+    // The name is the identifier. An .acb's own `prefix` / `suffix` header
+    // fields supply the decorative parts, so "PANTONE " + "Yellow" + " C"
+    // composes back to the label Adobe's own UI shows.
+    const entry = { code: cleanAdobeString(name) || slotId, name: null, hex };
     if (rgb) entry.rgb = rgb;
     if (cmyk) entry.cmyk = cmyk;
     if (lab) entry.lab = lab;

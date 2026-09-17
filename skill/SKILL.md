@@ -74,6 +74,8 @@ node skill/scripts/convert.mjs <输入文件> -o ~/.coloroteca/libraries/xxx.clf
 
 支持的输入格式：`.clf.json`、`.ase`、`.acb`、`.gpl`、文本（CSV/TSV/hex 列表/CSS 变量）。
 **`.acb` 是首选**——Adobe 色库自带真实的油墨 Lab 值，匹配精度高于任何从 hex 反推的结果。
+但这条有个例外：**ASE 的 LAB 色板也是真实 Lab，且比 ACB 更细**（ACB 每通道 8 位，量化误差约 ±1 个 RGB 单位）。
+判断依据是转换输出里有没有 `含 Lab` 那一行——有就说明走在 Lab 上，没有才是从 hex 反推。
 
 ## 参数
 

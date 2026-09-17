@@ -17,6 +17,7 @@
  *
  * Note that LAB swatches are defined against D50 and are adapted to D65 on
  * read — comparing them raw against sRGB-derived Lab would bias every match.
+ * The lightness in a LAB block is normalised to 0..1, unlike a and b.
  *
  * @module parsers/ase
  */
@@ -160,8 +161,12 @@ export function parseAse(input, options = {}) {
           rgb = cmykToRgb(cmyk);
           hex = rgbToHex(rgb);
         } else if (model === 'LAB') {
-          const raw = [f32(), f32(), f32()];
-          lab = labD50ToLabD65(raw).map((v) => round(v, 4));
+          // Adobe normalises the lightness only: L arrives as 0..1 while a and
+          // b are already in real Lab units. Reading L at face value collapses
+          // every swatch towards black — a bright red matched at ΔE ≈ 50, with
+          // the error invisible against a fixture that happened to store 0..100.
+          const [l, a, b] = [f32(), f32(), f32()];
+          lab = labD50ToLabD65([l * 100, a, b]).map((v) => round(v, 4));
           hex = labToHex(lab);
         } else if (model === 'GRAY') {
           const g = f32();

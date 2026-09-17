@@ -38,6 +38,11 @@ macOS 上在 `/Library/Application Support/Adobe/Color/Books/` 一带。
 
 **为什么优先用 ACB**：它是唯一自带真实油墨 Lab 值的格式。匹配时 Lab 会被直接使用，精度高于任何从 hex 反推的结果。
 
+两点修正，来自同一本色书两种封装的实测：
+
+- **ASE 里的 LAB 色板同样是真实 Lab**，而且比 ACB 更细。ACB 每通道只有 8 位，量化后约合 ±1 个 RGB 单位；ASE 的 LAB 是全精度浮点。拿同一本色书的 `.acb` 与 `.ase` 逐色号对打，差异正好落在 ACB 的量化误差内（多数色号相同或在单个通道上差 1）。
+- 所以 **"ACB 优于 ASE" 只在 ASE 是 RGB 模式时成立**。判断方法：转换后看输出有没有 `含 Lab` 那一行——ASE 的 LAB 色板会被读成浮点 Lab，RGB 色板才需要从 hex 反推。
+
 ```bash
 node skill/scripts/convert.mjs "C:\Program Files\Common Files\Adobe\Color Books\PANTONE+Solid Coated.acb" \
     -o ~/.coloroteca/libraries/pms-c.clf.json \

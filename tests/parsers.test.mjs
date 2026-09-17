@@ -160,7 +160,9 @@ test('ASE: RGB swatches parse into CLF', () => {
 });
 
 test('ASE: LAB swatches keep their Lab and are adapted from D50', () => {
-  const buf = buildAse([{ name: 'Neutral', model: 'LAB ', values: [50, 0, 0] }]);
+  // Adobe normalises L to 0..1 in an ASE LAB block, while a and b are already
+  // in real Lab units — hence 0.5 here rather than 50.
+  const buf = buildAse([{ name: 'Neutral', model: 'LAB ', values: [0.5, 0, 0] }]);
   const res = parseAse(buf);
   const c = res.library.colors[0];
   assert.ok(Array.isArray(c.lab), 'lab should be preserved');
@@ -168,6 +170,33 @@ test('ASE: LAB swatches keep their Lab and are adapted from D50', () => {
   assert.ok(Math.abs(c.lab[1]) < 1e-6, `a* should stay ~0, got ${c.lab[1]}`);
   assert.ok(Math.abs(c.lab[2]) < 1e-6, `b* should stay ~0, got ${c.lab[2]}`);
   assert.ok(Math.abs(c.lab[0] - 50) < 1e-6, `L* should stay ~50, got ${c.lab[0]}`);
+});
+
+/*
+ * Regression: L arrives normalised (0..1) but a and b are already in Lab units.
+ * Taking L literally put every swatch near black — a bright yellow imported as
+ * #010000, and a matching run against a real book returned ΔE ≈ 50 for colours
+ * that should have been within a few units. Assert on the resulting colour, not
+ * only on the number, because the numeric assertion alone passes either way.
+ */
+test('ASE: a normalised L is rescaled, not taken literally', () => {
+  // L* 87.55, a* 2.18, b* 109.05: the shape of a bright yellow swatch.
+  const buf = buildAse([
+    { name: 'Bright Yellow', model: 'LAB ', values: [0.8755, 2.18, 109.05] },
+  ]);
+  const c = parseAse(buf).library.colors[0];
+
+  // The Bradford D50 -> D65 adaptation moves L* by a fraction of a unit, so this
+  // asserts a band rather than the input value. The failure mode being guarded
+  // against is a value near 0.9, which is what reading L literally produces.
+  assert.ok(
+    c.lab[0] > 80 && c.lab[0] < 95,
+    `L* should be around 87, got ${c.lab[0]}`
+  );
+  assert.ok(
+    Math.max(...c.rgb) > 200,
+    `a bright swatch must not come out dark: rgb=${c.rgb.join(',')} hex=${c.hex}`
+  );
 });
 
 test('ASE: signature detection and rejection', () => {
@@ -241,7 +270,7 @@ test('ACB: header fields and Lab records parse correctly', () => {
   assert.equal(res.library.colors.length, 2);
 
   const [neutral, warm] = res.library.colors;
-  assert.equal(neutral.code, 'NTRL');
+  assert.equal(neutral.code, 'Neutral');
   assert.ok(Math.abs(neutral.lab[0] - 50.196) < 0.01, `L* got ${neutral.lab[0]}`);
   assert.ok(Math.abs(neutral.lab[1]) < 1e-3);
   assert.ok(Math.abs(neutral.lab[2]) < 1e-3);
@@ -251,11 +280,53 @@ test('ACB: header fields and Lab records parse correctly', () => {
   assert.match(res.library.meta.note, /D50 to D65/);
 });
 
+/*
+ * Regression: the record's six-byte field is Adobe's internal slot id, not a
+ * colour code. In a shipped PANTONE+ book those read "0061SC", "0064SC", … and
+ * abbreviate named swatches to "YELLOC". Treating them as the code produced
+ * libraries whose "185 C" entry was labelled "0061SC" — unusable for lookup,
+ * and wrong in a way that only shows up against a real book, never against a
+ * fixture whose name and code columns happen to be swapped.
+ */
+test('ACB: the swatch name is the code, not the six-byte slot id', () => {
+  const buf = buildAcb({
+    prefix: 'PANTONE ',
+    suffix: ' C',
+    records: [
+      { name: '106', code: '0064SC', components: [231, 124, 203] },
+      { name: 'Yellow', code: 'YELLOC', components: [227, 127, 239] },
+      { name: 'Orange 021', code: 'OR021C', components: [155, 194, 213] },
+    ],
+  });
+
+  const res = parseAcb(buf);
+  const codes = res.library.colors.map((c) => c.code);
+  assert.deepEqual(codes, ['106', 'Yellow', 'Orange 021']);
+
+  assert.equal(displayCode(res.library.colors[0], res.library.meta), 'PANTONE 106 C');
+  assert.equal(displayCode(res.library.colors[1], res.library.meta), 'PANTONE Yellow C');
+
+  for (const c of codes) {
+    assert.ok(!/^\d{4}SC$/.test(c), `slot id leaked into the code: ${c}`);
+  }
+});
+
+test('ACB: an empty-ish name still falls back to the slot id', () => {
+  const buf = buildAcb({
+    records: [{ name: '   ', code: 'PAD1  ', components: [128, 128, 128] }],
+  });
+  const res = parseAcb(buf);
+  assert.equal(res.library.colors.length, 1);
+  assert.equal(res.library.colors[0].code, 'PAD1');
+});
+
 test('ACB: displayCode composes prefix, code and suffix', () => {
+  // Mirrors the real format: the name column carries the number, the six-byte
+  // column carries Adobe's slot serial.
   const buf = buildAcb({
     prefix: 'TST ',
     suffix: ' C',
-    records: [{ name: 'One', code: '185', components: [128, 128, 128] }],
+    records: [{ name: '185', code: '0061SC', components: [128, 128, 128] }],
   });
   const res = parseAcb(buf);
   assert.equal(displayCode(res.library.colors[0], res.library.meta), 'TST 185 C');
@@ -479,6 +550,6 @@ test('an ACB book matches through Lab without a hex round trip', () => {
   });
   const { library } = parseAny(buf);
   const r = matchColor({ lab: [50.196, 0, 0] }, library, { top: 1 });
-  assert.equal(r.matches[0].code, 'NTRL');
+  assert.equal(r.matches[0].code, 'Neutral');
   assert.ok(r.matches[0].deltaE < 1e-3, `expected an exact hit, got ${r.matches[0].deltaE}`);
 });
