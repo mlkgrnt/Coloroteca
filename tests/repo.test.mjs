@@ -17,7 +17,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,12 +30,17 @@ const readText = (relPath) => readFileSync(join(ROOT, relPath), 'utf8');
 
 /**
  * Run a script in the repository and capture everything, including failure.
+ *
+ * The working directory defaults to the repository, but the archive tests below
+ * need a throwaway repository of their own, so the script path is resolved
+ * against it as well.
+ *
  * @returns {{status:number, stdout:string, stderr:string}}
  */
-function run(script, args = []) {
+function run(script, args = [], cwd = ROOT) {
   try {
-    const stdout = execFileSync(process.execPath, [join(ROOT, script), ...args], {
-      cwd: ROOT,
+    const stdout = execFileSync(process.execPath, [resolve(cwd, script), ...args], {
+      cwd,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
@@ -564,5 +569,54 @@ test('convert.mjs refuses a file it cannot parse instead of writing junk', () =>
     const result = run('skill/scripts/convert.mjs', [input, '-o', output]);
     assert.notEqual(result.status, 0, 'an unparseable input should fail');
     assert.ok(!existsSync(output), 'a failed conversion must not leave a file behind');
+  });
+});
+
+/* ═══════════════════════════════ archives ══════════════════════════════════ */
+
+/**
+ * A colour book normally arrives as an archive, and an archive is the one shape
+ * nothing else here can look inside: the swatch-table rule reads text, and the
+ * binary rule keys on extensions it recognises. That makes a .zip dropped into
+ * the tree the easiest way to break the project's promise by accident — which
+ * is not hypothetical. A downloaded colour book once sat in the working tree,
+ * untracked only because nobody had run `git add -A` in the meantime.
+ */
+
+test('.gitignore keeps a downloaded archive out of the index', (t) => {
+  if (!hasGitRepo()) return t.skip('not a git repository');
+
+  // Test the ignore behaviour rather than the text of .gitignore: the rule and
+  // the intent drifted apart once already, and the failure was silent.
+  const probeRel = 'tests/_archive_probe.zip';
+  const probeAbs = join(ROOT, 'tests', '_archive_probe.zip');
+  writeFileSync(probeAbs, 'PK\u0003\u0004 not really an archive', 'utf8');
+  try {
+    const ignored = tryGit(['check-ignore', '-v', '--', probeRel]);
+    assert.ok(ignored, 'an archive dropped in the repository would be committed');
+    assert.match(ignored, /\.gitignore:\d+:/, 'it was ignored, but not by .gitignore');
+  } finally {
+    rmSync(probeAbs, { force: true });
+  }
+});
+
+test('the compliance scanner notices an archive that has been committed', () => {
+  // The violation path cannot be exercised against the repository under test:
+  // proving it would mean staging a file, and a test capable of leaving
+  // something staged is a worse bug than the one it guards against — a stray
+  // archive in the index is exactly what this check exists to prevent. So build
+  // a throwaway repository instead: same layout, its own index, nothing shared
+  // with the checkout.
+  withTempDir('ct-archive-', (dir) => {
+    mkdirSync(join(dir, 'tools'), { recursive: true });
+    copyFileSync(join(ROOT, 'tools', 'scan-protected.mjs'), join(dir, 'tools', 'scan-protected.mjs'));
+
+    execFileSync('git', ['init', '-q'], { cwd: dir, stdio: 'ignore' });
+    writeFileSync(join(dir, 'colour-book.zip'), 'PK\u0003\u0004 not really an archive', 'utf8');
+    execFileSync('git', ['add', '--', 'colour-book.zip'], { cwd: dir, stdio: 'ignore' });
+
+    const result = run('tools/scan-protected.mjs', [], dir);
+    assert.notEqual(result.status, 0, `the scanner did not notice a tracked archive:\n${result.stdout}`);
+    assert.match(result.stdout, /archive-tracked/, 'the scanner flagged the wrong thing');
   });
 });

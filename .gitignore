@@ -14,6 +14,22 @@ data/libraries/*
 *.aco
 *.act
 
+# …nor anything that could be carrying them. A colour book is normally
+# downloaded as an archive, and an archive is the one shape nothing else can
+# look inside: the binary rule keys on extensions it recognises, the
+# swatch-table rule reads text, and neither can see through a zip. Keep such a
+# download outside the repository entirely; this rule is the backstop that
+# keeps a "stage everything" click from committing one.
+*.zip
+*.7z
+*.rar
+*.tar
+*.tgz
+*.gz
+*.bz2
+*.xz
+*.zst
+
 # Local build output
 dist/
 *.standalone.html

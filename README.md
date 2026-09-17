@@ -63,6 +63,10 @@
 
 运行环境要求 Node ≥ 20。本项目零依赖，无需执行 `npm install`。
 
+### 网页端：直接下载
+
+从 [Releases](https://github.com/mlkgrnt/Coloroteca/releases/latest) 下载 `coloroteca.html`，双击打开即可。单文件、离线、无需安装、无需构建。
+
 ### 网页端：单文件构建
 
 ```bash
@@ -122,8 +126,8 @@ node tools/install-skill.mjs
 
 | 格式 | 扩展名 | 说明 |
 |---|---|---|
-| **ACB** | `.acb` | Adobe 色库，内含真实油墨 Lab 值，为首选格式 |
-| ASE | `.ase` | Adobe Swatch Exchange，Freetone 等采用此格式 |
+| **ACB** | `.acb` | Adobe 色库，保存原始油墨 Lab 值（8 位量化） |
+| ASE | `.ase` | Adobe Swatch Exchange，Freetone 等采用此格式；LAB 色块为完整精度 |
 | CLF | `.clf.json` | 本项目原生格式，见 [格式规范](docs/CLF-FORMAT.md) |
 | GPL | `.gpl` | GIMP、Inkscape、Aseprite |
 | 文本 | `.txt` `.csv` `.tsv` `.css` | 每行一个色值，或 `色号 #色值` |
@@ -218,7 +222,7 @@ Coloroteca/
 │   └── libraries/         用户色库（gitignored，仅 .gitkeep 入库）
 ├── tools/                 serve · build-standalone · make-demo-libraries
 │                          make-zh-colornames · install-skill · scan-protected
-├── tests/                 105 项测试（node --test）
+├── tests/                 111 项测试（node --test）
 ├── .github/workflows/     CI：测试、仓库检查、生成物校验
 └── docs/                  CLF-FORMAT.md · GETTING-LIBRARIES.md
 ```
@@ -232,7 +236,7 @@ Coloroteca/
 ## 开发与测试
 
 ```bash
-npm test            # node --test，105 项
+npm test            # node --test，111 项
 npm run check       # 检查仓库内是否含有不应提交的色库数据
 npm run serve       # 本地服务（127.0.0.1:8787）
 npm run build       # 生成 dist/coloroteca.html
@@ -254,7 +258,7 @@ npm run skill:install
 
 欢迎提交 Issue 与 Pull Request。改动请一并附上测试，`npm test` 与 `npm run check` 均须通过。
 
-请勿提交任何色库数据文件（`.ase`、`.acb`、`.aco`、`.act`，以及色卡表或第三方色号列表）。此类文件由 `.gitignore` 排除，CI 亦会拒绝。
+请勿提交任何色库数据文件（`.ase`、`.acb`、`.aco`、`.act`，以及色卡表或第三方色号列表），也不要提交下载色库时得到的压缩包——压缩包是唯一无法被合规扫描读出内容的形式，因此单个入库的压缩包一律判为错误。上述文件均由 `.gitignore` 排除，CI 亦会拒绝。
 
 ---
 

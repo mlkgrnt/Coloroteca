@@ -21,6 +21,8 @@
  *   4. colour-name tables whose entries cite a source outside the allowlist
  *   5. colour libraries under data/libraries/ that have been staged for commit
  *      (placeholders such as .gitkeep excepted — they hold no colour data)
+ *   6. archives tracked by git, because an archive is the one shape none of
+ *      the checks above can see inside
  *
  * SCOPE: this inspects THE REPOSITORY, never the user's machine. Colour
  * libraries under data/libraries/ are reported as a count and otherwise left
@@ -54,6 +56,17 @@ const PERMISSIVE_LICENCES = new Set([
 
 /** Binary colour-book formats. These are user data, never repository content. */
 const COLOUR_BOOK_EXTENSIONS = new Set(['.ase', '.acb', '.aco', '.act']);
+
+/**
+ * Archive formats. A colour book is normally downloaded as one, and an archive
+ * is the one shape none of the other checks here can look inside: the binary
+ * rule keys on extensions it recognises, the swatch-table rule reads text, and
+ * neither can see through a zip. That makes a tracked archive worth an error in
+ * its own right rather than a container assumed to be harmless.
+ */
+const ARCHIVE_EXTENSIONS = new Set([
+  '.zip', '.7z', '.rar', '.tar', '.tgz', '.gz', '.bz2', '.xz', '.zst',
+]);
 
 /**
  * Names of proprietary colour systems. Their presence is a hint, not proof: our
@@ -298,30 +311,49 @@ function checkNameTable() {
   );
 }
 
-/** 5. The user's own library directory must not be staged for commit. */
-function checkUserLibrariesNotStaged() {
-  if (!existsSync(USER_LIBRARY_DIR)) return;
+let gitNotePushed = false;
 
-  // Distinguish "no repository yet" from "git failed", so the note tells the
-  // truth instead of blaming the toolchain.
+/** Say once — and only once — why a check that reads git did not run. */
+function noteGitUnavailable(reason) {
+  if (gitNotePushed) return;
+  gitNotePushed = true;
+  notes.push(`${reason} — the checks that read git were skipped`);
+}
+
+/**
+ * Ask git which files it tracks. Returns null when git could not be asked at
+ * all, which is a different answer from "nothing is tracked": a false "clean"
+ * is precisely the failure this scanner exists to prevent, so the two must not
+ * be collapsed into an empty list.
+ *
+ * @param {string[]} pathspec
+ * @returns {string[]|null}
+ */
+function gitTrackedFiles(pathspec = []) {
   if (!existsSync(join(ROOT, '.git'))) {
-    notes.push('not a git repository yet — skipped the check for staged user libraries');
-    return;
+    noteGitUnavailable('not a git repository yet');
+    return null;
   }
 
-  let staged;
   try {
-    staged = execFileSync('git', ['ls-files', '--', 'data/libraries'], {
+    const output = execFileSync('git', ['ls-files', '--', ...pathspec], {
       cwd: ROOT,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
+    return output.split(/\r?\n/).filter(Boolean);
   } catch (err) {
-    notes.push(`could not run git ls-files (${String(err.message).split('\n')[0]}) — staged-file check skipped`);
-    return;
+    noteGitUnavailable(`could not run git ls-files (${String(err.message).split('\n')[0]})`);
+    return null;
   }
+}
 
-  const tracked = staged.split(/\r?\n/).filter(Boolean);
+/** 5. The user's own library directory must not be staged for commit. */
+function checkUserLibrariesNotStaged() {
+  if (!existsSync(USER_LIBRARY_DIR)) return;
+
+  const tracked = gitTrackedFiles(['data/libraries']);
+  if (tracked == null) return;
 
   // A placeholder cannot carry colour data, so it cannot break the promise this
   // check protects. data/libraries/.gitkeep is re-included by .gitignore on
@@ -342,6 +374,36 @@ function checkUserLibrariesNotStaged() {
 }
 
 /**
+ * 6. No archive may be tracked by git.
+ *
+ * Note the scope, because it is the same distinction check 5 draws: this asks
+ * git what is in the index, not what is on disk. Keeping a downloaded .zip in
+ * the working tree is legitimate in exactly the way that keeping a licensed
+ * colour book there is — using one is fine, redistributing one is not — and
+ * .gitignore keeps it out of the index. This check is for the case where that
+ * rule is bypassed or removed, and it earns its place because an archive is the
+ * one artifact no other check in this file can read.
+ */
+function checkArchivesNotTracked() {
+  const tracked = gitTrackedFiles();
+  if (tracked == null) return;
+
+  const archives = tracked.filter((file) => ARCHIVE_EXTENSIONS.has(extname(file).toLowerCase()));
+  if (!archives.length) return;
+
+  report(
+    'error',
+    'archive-tracked',
+    archives[0],
+    `${archives.length} archive(s) are tracked by git: ${archives.slice(0, 5).join(', ')}` +
+      (archives.length > 5 ? ', …' : '') +
+      '. Nothing here can inspect the contents of an archive, so one may be carrying a colour ' +
+      'book the other checks would have caught. Keep it outside the repository; if it was ' +
+      'added by mistake, run: git rm --cached <file>'
+  );
+}
+
+/**
  * True for a file that cannot plausibly be a user's colour library: the
  * conventional .gitkeep placeholder, or an empty file. Deliberately narrow —
  * a dotfile with a real payload (`.my-book.clf.json`) still counts as an
@@ -357,7 +419,7 @@ function isPlaceholder(abs) {
   }
 }
 
-/** 6. Files under data/libraries are fine locally, but say what is there. */
+/** 7. Files under data/libraries are fine locally, but say what is there. */
 function noteUserLibraries() {
   if (!existsSync(USER_LIBRARY_DIR)) return;
   let count = 0;
@@ -383,6 +445,7 @@ function main() {
   checkSwatchTables(files);
   checkNameTable();
   checkUserLibrariesNotStaged();
+  checkArchivesNotTracked();
   noteUserLibraries();
 
   const errors = findings.filter((f) => f.level === 'error');
@@ -404,7 +467,7 @@ function main() {
   if (!findings.length) {
     console.log('PASS — 仓库内没有发现受保护色库数据。');
     console.log('');
-    console.log('  检查项：色库二进制文件 · CLF 许可声明 · 批量色卡表特征 · 色名表来源 · data/libraries 是否入库');
+    console.log('  检查项：色库二进制文件 · CLF 许可声明 · 批量色卡表特征 · 色名表来源 · data/libraries 是否入库 · 压缩包是否入库');
     return;
   }
 
