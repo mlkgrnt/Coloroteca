@@ -57,6 +57,17 @@ node skill/scripts/convert.mjs my-palette.ase -o ~/.coloroteca/libraries/my-pale
     --name "My palette" --license proprietary
 ```
 
+**注意这里没有 `--prefix` / `--suffix`，这是有意的。** ASE 的每个色板名本身就是完整标签
+（「Freetone 185 C」就是一个名字），转换时整串进入 `code` 字段。再传一次前后缀会拼成
+「FREETONE Freetone 185 C C」。**上面 ACB 那条示例必须传，是因为 ACB 里存的是裸数字**——
+两者正好相反，不要互相套用。
+
+判断方法：转换后跑一次反查，看色号显示得对不对。
+
+```bash
+node skill/scripts/match.mjs --code "185 C" --library my-palette
+```
+
 ### 直接粘贴
 
 手上只有一张截图或一段文字？用网页版的「导入 → 粘贴色值列表」，一行一个：
