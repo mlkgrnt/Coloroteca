@@ -1,0 +1,16 @@
+# Normalise line endings in the repository, so a Windows checkout and a Linux
+# checkout produce identical diffs. The working tree keeps the platform's
+# convention; the index always stores LF.
+* text=auto eol=lf
+
+# Colour-book binaries: never touch these, even if one is ever added as a test
+# fixture. (Today none are tracked — see .gitignore.)
+*.ase binary
+*.acb binary
+*.aco binary
+*.act binary
+
+# Generated, not hand-written — collapse it in review rather than reading it.
+# The demo .clf.json files are deliberately NOT listed: they are data people
+# need to see changing, so they stay fully diffable.
+web/demo-libraries.js linguist-generated

@@ -1,0 +1,1925 @@
+{
+  "version": 1,
+  "description": "中文色名到参考色值的映射表，供自然语言色名匹配使用。",
+  "count": 202,
+  "notes": [
+    "traditional 条目来自 MIT 许可的 wyvernnot/ancient-chinese-color，版权归原作者。",
+    "modern 条目为 Coloroteca 自行整理，标 approximate: true —— 它们是描述性色名的代表性取值，不是权威定义，不声称唯一正确。",
+    "刻意不收录有商标或品牌归属的色名。",
+    "同名冲突时以 traditional 条目为准，modern 的同义写法并入其 aliases。"
+  ],
+  "entries": [
+    {
+      "name": "黝黑",
+      "hex": "#665757",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黝黑：（皮肤暴露在太阳光下而晒成的）青黑色"
+    },
+    {
+      "name": "大红",
+      "hex": "#ff2121",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "大红：正红色，三原色中的红，传统的中国红，又称绛色。"
+    },
+    {
+      "name": "精白",
+      "hex": "#ffffff",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "精白：纯白，洁白，净白，粉白。"
+    },
+    {
+      "name": "灰色",
+      "hex": "#808080",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "灰色：黑色和白色混和成的一种颜色"
+    },
+    {
+      "name": "黑色",
+      "hex": "#000000",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黑色：亮度最低的非彩色的或消色差的物体的颜色；最暗的灰色；被认为特别属于那些既不能反射、又不能透过能使人感觉到的微小入射光的物体,任何亮度很低的物体颜色。"
+    },
+    {
+      "name": "缁色",
+      "hex": "#493131",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "缁色：帛黑色"
+    },
+    {
+      "name": "银红",
+      "hex": "#f05654",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "银红：银朱和粉红色颜料配成的颜色。多用来形容有光泽的各种红色，尤指有光泽浅红。"
+    },
+    {
+      "name": "石榴红",
+      "hex": "#f20c00",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "石榴红：石榴花的颜色，高色度和纯度的红色。"
+    },
+    {
+      "name": "酡红",
+      "hex": "#dc3023",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "酡红：像饮酒后脸上泛现的红色，泛指脸红"
+    },
+    {
+      "name": "粉红",
+      "hex": "#ffb3a7",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "粉红，即浅红色。别称：妃色杨妃色湘妃色妃红色。"
+    },
+    {
+      "name": "栗色",
+      "hex": "#60281e",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "栗色：栗壳的颜色。即紫黑色。"
+    },
+    {
+      "name": "绯红",
+      "hex": "#c83c23",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绯红：艳丽的深红。"
+    },
+    {
+      "name": "彤",
+      "hex": "#f35336",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "彤：赤色。"
+    },
+    {
+      "name": "檀",
+      "hex": "#b36d61",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "檀：浅红色，浅绛色。"
+    },
+    {
+      "name": "紫檀",
+      "hex": "#4c221b",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "紫檀：檀木的颜色，也称乌檀色乌木色"
+    },
+    {
+      "name": "玄色",
+      "hex": "#622a1d",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "玄色：赤黑色，黑中带红的颜色，又泛指黑色"
+    },
+    {
+      "name": "妃色",
+      "hex": "#ed5736",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "妃红色：古同“绯”，粉红色。杨妃色 湘妃色 粉红皆同义。"
+    },
+    {
+      "name": "丹",
+      "hex": "#ff4e20",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "丹：丹砂的鲜艳红色"
+    },
+    {
+      "name": "炎",
+      "hex": "#ff3300",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "炎：引申为红色。"
+    },
+    {
+      "name": "茶色",
+      "hex": "#b35c44",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "茶色：一种比栗色稍红的棕橙色至浅棕色。"
+    },
+    {
+      "name": "酡颜",
+      "hex": "#f9906f",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "酡颜：饮酒脸红的样子。亦泛指脸红色"
+    },
+    {
+      "name": "绾",
+      "hex": "#a98175",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绾：绛色；浅绛色。"
+    },
+    {
+      "name": "煤黑",
+      "hex": "#312520",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "煤黑像牙黑：都是黑，不过有冷暖之分。"
+    },
+    {
+      "name": "朱红",
+      "hex": "#ff4c00",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "朱红：朱砂的颜色，比大红活泼，也称铅朱朱色丹色。"
+    },
+    {
+      "name": "赭色",
+      "hex": "#955539",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "赭色：红色、赤红色。古人用以饰面。"
+    },
+    {
+      "name": "鱼肚白",
+      "hex": "#fcefe8",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "鱼肚白：似鱼腹部的颜色，多指黎明时东方的天色颜色"
+    },
+    {
+      "name": "棕色",
+      "hex": "#b25d25",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "棕色：棕毛的颜色,即褐色。 1，在红色和黄色之间的任何一种颜色2，适中的暗淡和适度的浅黑。"
+    },
+    {
+      "name": "琥珀",
+      "hex": "#ca6924",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "橘黄",
+      "hex": "#ff8936",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "橘黄：柑橘的黄色。"
+    },
+    {
+      "name": "棕红",
+      "hex": "#9b4400",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "棕红：红褐色。"
+    },
+    {
+      "name": "橙色",
+      "hex": "#fa8c35",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "橙色：界于红色和黄色之间的混合色。"
+    },
+    {
+      "name": "杏红",
+      "hex": "#ff8c31",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "杏红：成熟杏子偏红色的一种颜色。"
+    },
+    {
+      "name": "橘红",
+      "hex": "#ff7500",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "橘红：柑橘皮所呈现的红色"
+    },
+    {
+      "name": "驼色",
+      "hex": "#a88462",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "驼色：一种比哢叽色稍红而微淡、比肉桂色黄而稍淡和比核桃棕色黄而暗的浅黄棕色。"
+    },
+    {
+      "name": "黄栌",
+      "hex": "#e29c45",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黄栌：一种落叶灌木，花黄绿色,叶子秋天变成红色。木材黄色可做染料。"
+    },
+    {
+      "name": "杏黄",
+      "hex": "#ffa631",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "杏黄：成熟杏子的黄色。"
+    },
+    {
+      "name": "棕黑",
+      "hex": "#7c4b00",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "棕黑：深​​棕色。"
+    },
+    {
+      "name": "姜黄",
+      "hex": "#ffc773",
+      "aliases": [
+        "姜黄色"
+      ],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "姜黄：中药名。别名黄姜。为姜科植物姜黄的根茎。又指人脸色不正,呈黄白色。"
+    },
+    {
+      "name": "枯黄",
+      "hex": "#d3b17d",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "枯黄：干枯焦黄。"
+    },
+    {
+      "name": "黧",
+      "hex": "#5d513c",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黧：黑中带黄的颜色"
+    },
+    {
+      "name": "秋色",
+      "hex": "#896c39",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "秋色：1，中常橄榄棕色,它比一般橄榄棕色稍暗,且稍稍绿些。 2，古以秋为金,其色白,故代指白色。"
+    },
+    {
+      "name": "褐色",
+      "hex": "#6e511e",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "褐色： 黄黑色"
+    },
+    {
+      "name": "黎",
+      "hex": "#75664d",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黎：黑中带黄似黎草色"
+    },
+    {
+      "name": "棕黄",
+      "hex": "#ae7000",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "棕黄：浅褐色。"
+    },
+    {
+      "name": "橙黄",
+      "hex": "#ffa400",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "橙黄：橙的黄色。 （现代感比较强。广告上用得较多）"
+    },
+    {
+      "name": "昏黄",
+      "hex": "#c89b40",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "昏黄：形容天色、灯光等呈幽暗的黄色。"
+    },
+    {
+      "name": "赤金",
+      "hex": "#f2be45",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "赤金：足金的颜色"
+    },
+    {
+      "name": "缟",
+      "hex": "#f2ecde",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "缟：白色"
+    },
+    {
+      "name": "像牙白",
+      "hex": "#fffbf0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "像牙白：乳白色"
+    },
+    {
+      "name": "金色",
+      "hex": "#eacd76",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "金色：平均为深黄色带光泽的颜色"
+    },
+    {
+      "name": "乌金",
+      "hex": "#a78e44",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "牙色",
+      "hex": "#eedeb0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "牙色：与像牙相似的淡黄色（注：暖白）"
+    },
+    {
+      "name": "缃色",
+      "hex": "#f0c239",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "缃色：浅黄色。"
+    },
+    {
+      "name": "苍青",
+      "hex": "#a29b7c",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "秋香色",
+      "hex": "#d9b611",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "秋香色：浅橄榄色浅黄绿色。 （注：直接在Y中掺入k10~30可得到不同浓淡的该类色彩）"
+    },
+    {
+      "name": "棕绿",
+      "hex": "#827100",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "棕绿：绿中泛棕色的一种颜色。"
+    },
+    {
+      "name": "鹅黄",
+      "hex": "#fff143",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "鹅黄：淡黄色。"
+    },
+    {
+      "name": "鸭黄",
+      "hex": "#faff72",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "鸭黄：小鸭毛的黄色。"
+    },
+    {
+      "name": "柳黄",
+      "hex": "#c9dd22",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "柳黄：像柳树芽那样的浅黄色"
+    },
+    {
+      "name": "樱草色",
+      "hex": "#eaff56",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "樱草色：淡黄色。"
+    },
+    {
+      "name": "嫩绿",
+      "hex": "#bddd22",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "嫩绿：像刚长出的嫩叶的浅绿色"
+    },
+    {
+      "name": "葱黄",
+      "hex": "#a3d900",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "葱黄：黄绿色，嫩黄色"
+    },
+    {
+      "name": "柳绿",
+      "hex": "#afdd22",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "柳绿：柳叶的青绿色"
+    },
+    {
+      "name": "葱绿",
+      "hex": "#9ed900",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "葱绿：1，浅绿又略显微黄的颜色2，草木青翠的样子"
+    },
+    {
+      "name": "松花色",
+      "hex": "#bce672",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "松花色：浅黄绿色。 （松树花粉的颜色）《红楼梦》中提及松花配桃红为娇艳"
+    },
+    {
+      "name": "豆绿",
+      "hex": "#9ed048",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "豆绿：浅黄绿色"
+    },
+    {
+      "name": "豆青",
+      "hex": "#96ce54",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "豆青：浅青绿色"
+    },
+    {
+      "name": "竹青",
+      "hex": "#789262",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "竹青：竹子的绿色"
+    },
+    {
+      "name": "荼白",
+      "hex": "#f3f9f1",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "荼白：如荼之白色"
+    },
+    {
+      "name": "绿色",
+      "hex": "#00e500",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绿色：1，在光谱中介于蓝与黄之间的那种颜色。 2，本义：青中带黄的颜色。 3，引申为黑色，如绿鬓：乌黑而光亮的鬓发。代指为青春年少的容颜。"
+    },
+    {
+      "name": "油绿",
+      "hex": "#00bc12",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "油绿：光润而浓绿的颜色。以上几种绿色都是明亮可爱的色彩。"
+    },
+    {
+      "name": "绿沉",
+      "hex": "#0c8918",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绿沉：深绿"
+    },
+    {
+      "name": "草绿",
+      "hex": "#40de5a",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "草绿：绿而略黄的颜色。"
+    },
+    {
+      "name": "葱青",
+      "hex": "#0eb83a",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "葱青：淡淡的青绿色"
+    },
+    {
+      "name": "青葱",
+      "hex": "#0aa344",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青葱：翠绿色,形容植物浓绿"
+    },
+    {
+      "name": "缥",
+      "hex": "#7fecad",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "缥：绿色而微白"
+    },
+    {
+      "name": "苍黄",
+      "hex": "#519a73",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "石青",
+      "hex": "#7bcfa6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "石青：淡灰绿色"
+    },
+    {
+      "name": "玉色",
+      "hex": "#7bcfa6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "玉色：玉的颜色，高雅的淡绿、淡青色"
+    },
+    {
+      "name": "青翠",
+      "hex": "#00e079",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青翠：鲜绿"
+    },
+    {
+      "name": "青白",
+      "hex": "#c0ebd7",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青白：白而发青,尤指脸没有血色"
+    },
+    {
+      "name": "艾绿",
+      "hex": "#a4e2c6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "艾绿：艾草的颜色。偏苍白的绿色。"
+    },
+    {
+      "name": "蟹壳青",
+      "hex": "#bbcdc5",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "蟹壳青：深灰绿色"
+    },
+    {
+      "name": "鸭卵青",
+      "hex": "#e0eee8",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "鸭卵青：淡青灰色，极淡的青绿色"
+    },
+    {
+      "name": "素",
+      "hex": "#e0f0e9",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "素：白色，无色"
+    },
+    {
+      "name": "松花绿",
+      "hex": "#057748",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "松花绿：亦作“松花”、“松绿”。偏黑的深绿色,墨绿。"
+    },
+    {
+      "name": "碧绿",
+      "hex": "#2add9c",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "碧绿：鲜艳的青绿色"
+    },
+    {
+      "name": "松柏绿",
+      "hex": "#21a675",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "松柏绿：经冬松柏叶的深绿"
+    },
+    {
+      "name": "水绿",
+      "hex": "#d4f2e7",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "翡翠色",
+      "hex": "#3de1ad",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "翡翠色：1，翡翠鸟羽毛的青绿色。 2，翡翠宝石的颜色。 (注：C-Y≧30\n  的系列色彩，多与白色配合以体现清新明丽感觉，与黑色配合效果不好：该色个性柔弱，会被黑色牵制)"
+    },
+    {
+      "name": "青色",
+      "hex": "#00e09e",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青色：1，一类带绿的蓝色,中等深浅,高度饱和。 3，本义是蓝色。 4，一般指深绿色。 5，也指黑色。 6，四色印刷中的一色。 2，特指三补色中的一色。"
+    },
+    {
+      "name": "碧色",
+      "hex": "#1bd1a5",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "碧色：1，青绿色。 2，青白色,浅蓝色。"
+    },
+    {
+      "name": "老银",
+      "hex": "#bacac6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "老银：金属氧化后的色彩"
+    },
+    {
+      "name": "青碧",
+      "hex": "#48c0a3",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青碧：鲜艳的青蓝色"
+    },
+    {
+      "name": "湖绿",
+      "hex": "#25f8cb",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "铜绿",
+      "hex": "#549688",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "水色",
+      "hex": "#88ada6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "碧蓝",
+      "hex": "#3eede7",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "碧蓝：青蓝色"
+    },
+    {
+      "name": "黛绿",
+      "hex": "#426666",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黛绿：墨绿。"
+    },
+    {
+      "name": "蔚蓝",
+      "hex": "#70f3ff",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "蔚蓝：类似晴朗天空的颜色的一种蓝色"
+    },
+    {
+      "name": "湖蓝",
+      "hex": "#30dff3",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "水蓝",
+      "hex": "#d2f0f4",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "莹白",
+      "hex": "#e3f9fd",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "莹白：晶莹洁白"
+    },
+    {
+      "name": "苍色",
+      "hex": "#75878a",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "苍色：即各种颜色掺入黑色后的颜色，如苍翠"
+    },
+    {
+      "name": "月白",
+      "hex": "#d6ecf0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "月白：淡蓝色"
+    },
+    {
+      "name": "雪白",
+      "hex": "#f0fcff",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "雪白：如雪般洁白"
+    },
+    {
+      "name": "蓝",
+      "hex": "#44cef6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "蓝：三原色的一种。像晴天天空的颜色（注：这里的蓝色指的不是RGB色彩中的B，而是CMY色彩中的C）"
+    },
+    {
+      "name": "鸦青",
+      "hex": "#424c50",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "鸦青：鸦羽的颜色。即黑而带有紫绿光的颜色。"
+    },
+    {
+      "name": "花白",
+      "hex": "#c2ccd0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "花白：白色和黑色混杂的。斑白的 夹杂有灰色的白"
+    },
+    {
+      "name": "黯",
+      "hex": "#41555d",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黯：深黑色、泛指黑色"
+    },
+    {
+      "name": "靛青",
+      "hex": "#177cb0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "靛青：也叫“蓝靛”。用蓼蓝叶泡水调和与石灰沉淀所得的蓝色染料。呈深蓝绿色\n  （注：有些地方将蓝墨水称为“靛水”或者“兰靛水”）"
+    },
+    {
+      "name": "群青",
+      "hex": "#4c8dae",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "群青：深蓝色"
+    },
+    {
+      "name": "靛蓝",
+      "hex": "#065279",
+      "aliases": [
+        "靛青色"
+      ],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "靛蓝：由植物(例如靛蓝或菘蓝属植物)得到的蓝色染料"
+    },
+    {
+      "name": "苍黑",
+      "hex": "#7397ab",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "霜色",
+      "hex": "#e9f1f6",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "霜色：白霜的颜色"
+    },
+    {
+      "name": "墨灰",
+      "hex": "#758a99",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "墨灰：即黑灰"
+    },
+    {
+      "name": "墨色",
+      "hex": "#50616d",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "墨色：即黑色"
+    },
+    {
+      "name": "苍白",
+      "hex": "#d1d9e0",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "绀青",
+      "hex": "#003371",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绀青绀紫：纯度较低的深紫色"
+    },
+    {
+      "name": "淡青",
+      "hex": "#d3e0f3",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "藏青",
+      "hex": "#2e4e7e",
+      "aliases": [
+        "藏蓝",
+        "藏青色"
+      ],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "藏青：蓝而近黑"
+    },
+    {
+      "name": "黛蓝",
+      "hex": "#425066",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黛蓝：深蓝色"
+    },
+    {
+      "name": "蓝灰色",
+      "hex": "#a1afc9",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "蓝灰色：一种近于灰略带蓝的深灰色"
+    },
+    {
+      "name": "漆黑",
+      "hex": "#161823",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "漆黑：非常黑的"
+    },
+    {
+      "name": "宝蓝",
+      "hex": "#4b5cc4",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "宝蓝：鲜艳明亮的蓝色（注：英文中为RoyalBlue\n  即皇家蓝色，是皇室选用的色彩，多和小面积纯黄色（金色）配合使用。 ）"
+    },
+    {
+      "name": "铅白",
+      "hex": "#f0f0f4",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "铅白：铅粉的白色。铅粉，国画颜料，日久易氧化“返铅”变黑。铅粉在古时用以搽脸的化妆品。 （注：冷白）"
+    },
+    {
+      "name": "玄青",
+      "hex": "#3d3b4f",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "玄青：深黑色"
+    },
+    {
+      "name": "黝",
+      "hex": "#6b6882",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黝：本义为淡黑色或微青黑色。"
+    },
+    {
+      "name": "藏蓝",
+      "hex": "#3b2e7e",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "藏蓝：蓝里略透红色"
+    },
+    {
+      "name": "雪青",
+      "hex": "#b0a4e3",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "雪青：浅蓝紫色"
+    },
+    {
+      "name": "黛",
+      "hex": "#4a4266",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黛：青黑色的颜料。古代女子用以画眉。"
+    },
+    {
+      "name": "银白",
+      "hex": "#e9e7ef",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "银白：带银光的白色"
+    },
+    {
+      "name": "乌色",
+      "hex": "#725e82",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "乌色：暗而呈黑的颜色"
+    },
+    {
+      "name": "乌黑",
+      "hex": "#392f41",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "乌黑：深黑"
+    },
+    {
+      "name": "紫色",
+      "hex": "#8d4bbb",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "紫色：蓝和红组成的颜色。古人以紫为祥瑞的颜色。代指与帝王、皇宫有关的事物。"
+    },
+    {
+      "name": "黛紫",
+      "hex": "#574266",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "黛紫：深紫色"
+    },
+    {
+      "name": "丁香色",
+      "hex": "#cca4e3",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "丁香色：紫丁香的颜色，浅浅的紫色，很娇柔淡雅的色彩"
+    },
+    {
+      "name": "青莲",
+      "hex": "#801dae",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "青莲：偏蓝的紫色"
+    },
+    {
+      "name": "紫棠",
+      "hex": "#56004f",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "紫棠：黑红色"
+    },
+    {
+      "name": "酱紫",
+      "hex": "#815476",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "酱紫：紫中略带红的颜色"
+    },
+    {
+      "name": "水红",
+      "hex": "#f3d3e7",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": null
+    },
+    {
+      "name": "洋红",
+      "hex": "#ff0097",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "洋红：色橘红。"
+    },
+    {
+      "name": "品红",
+      "hex": "#f00056",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "品红：比大红浅的红色。"
+    },
+    {
+      "name": "藕荷色",
+      "hex": "#e4c6d0",
+      "aliases": [
+        "藕粉",
+        "藕荷"
+      ],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "藕荷色：浅紫而略带红的颜色"
+    },
+    {
+      "name": "紫酱",
+      "hex": "#815463",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "紫酱：浑浊的紫色"
+    },
+    {
+      "name": "绛紫",
+      "hex": "#8c4356",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "绛紫：紫中略带红的颜色。"
+    },
+    {
+      "name": "殷红",
+      "hex": "#be002f",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "殷红：发黑的红色。"
+    },
+    {
+      "name": "藕色",
+      "hex": "#edd1d8",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "藕色：浅灰而略带红的颜色"
+    },
+    {
+      "name": "樱桃色",
+      "hex": "#c93756",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "樱桃色：鲜红色。"
+    },
+    {
+      "name": "茜色",
+      "hex": "#cb3a56",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "茜色：茜草染的色彩，呈深红色。"
+    },
+    {
+      "name": "火红",
+      "hex": "#ff2d51",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "火红：火焰的红色，赤色。"
+    },
+    {
+      "name": "海棠红",
+      "hex": "#db5a6b",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "海棠红，淡紫红色、较桃红色深一些，是非常妩媚娇艳的颜色。"
+    },
+    {
+      "name": "赫赤",
+      "hex": "#c91f37",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "赫赤：深红，火红。泛指赤色、火红色。"
+    },
+    {
+      "name": "枣红",
+      "hex": "#c32136",
+      "aliases": [
+        "枣红色"
+      ],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "枣红：即深红"
+    },
+    {
+      "name": "胭脂",
+      "hex": "#9d2933",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "胭脂：1，女子装扮时用的胭脂的颜色。 2，国画暗红色颜料 。"
+    },
+    {
+      "name": "桃红",
+      "hex": "#f47983",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "桃红，桃花的颜色，比粉红略鲜润的颜色。"
+    },
+    {
+      "name": "嫣红",
+      "hex": "#ef7a82",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "嫣红：鲜艳的红色。"
+    },
+    {
+      "name": "赤",
+      "hex": "#c3272b",
+      "aliases": [],
+      "category": "traditional",
+      "approximate": false,
+      "source": "wyvernnot/ancient-chinese-color (MIT)",
+      "note": "赤：本义火的颜色，即红色。"
+    },
+    {
+      "name": "莫兰迪灰粉",
+      "hex": "#c8b8b4",
+      "aliases": [
+        "莫兰迪粉"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调低饱和粉色的代表值"
+    },
+    {
+      "name": "莫兰迪绿",
+      "hex": "#a8b5a2",
+      "aliases": [
+        "莫兰迪灰绿"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调低饱和绿"
+    },
+    {
+      "name": "莫兰迪蓝",
+      "hex": "#8e9bae",
+      "aliases": [
+        "莫兰迪灰蓝"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调低饱和蓝"
+    },
+    {
+      "name": "莫兰迪灰",
+      "hex": "#b9b2a8",
+      "aliases": [],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "莫兰迪色系的中间灰"
+    },
+    {
+      "name": "马卡龙粉",
+      "hex": "#ffb6c1",
+      "aliases": [
+        "马卡龙粉红"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "低饱和高明度粉"
+    },
+    {
+      "name": "马卡龙绿",
+      "hex": "#b5ead7",
+      "aliases": [
+        "马卡龙薄荷"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "低饱和高明度绿"
+    },
+    {
+      "name": "马卡龙黄",
+      "hex": "#fff2b2",
+      "aliases": [],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "低饱和高明度黄"
+    },
+    {
+      "name": "马卡龙蓝",
+      "hex": "#aec6cf",
+      "aliases": [],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "低饱和高明度蓝"
+    },
+    {
+      "name": "雾霾蓝",
+      "hex": "#7a9eb1",
+      "aliases": [
+        "灰蓝"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "带灰调的蓝"
+    },
+    {
+      "name": "奶茶色",
+      "hex": "#c4a88a",
+      "aliases": [
+        "奶茶",
+        "奶茶棕"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "米棕之间的柔和色"
+    },
+    {
+      "name": "焦糖色",
+      "hex": "#af6e4d",
+      "aliases": [
+        "焦糖"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "暖棕橙"
+    },
+    {
+      "name": "珊瑚粉",
+      "hex": "#ff7f50",
+      "aliases": [
+        "珊瑚色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "橙粉之间"
+    },
+    {
+      "name": "蜜桃粉",
+      "hex": "#ffdab9",
+      "aliases": [
+        "蜜桃色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "浅橙粉"
+    },
+    {
+      "name": "薄荷绿",
+      "hex": "#98ff98",
+      "aliases": [
+        "薄荷"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "清亮浅绿"
+    },
+    {
+      "name": "抹茶绿",
+      "hex": "#b5c99a",
+      "aliases": [
+        "抹茶"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "低饱和黄绿"
+    },
+    {
+      "name": "牛油果绿",
+      "hex": "#87a96b",
+      "aliases": [
+        "牛油果"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调黄绿"
+    },
+    {
+      "name": "勃艮第红",
+      "hex": "#800020",
+      "aliases": [
+        "勃艮第"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "深红带紫"
+    },
+    {
+      "name": "酒红",
+      "hex": "#722f37",
+      "aliases": [
+        "酒红色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "暗红"
+    },
+    {
+      "name": "燕麦色",
+      "hex": "#e3d9c6",
+      "aliases": [
+        "燕麦"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "浅米灰"
+    },
+    {
+      "name": "奶油白",
+      "hex": "#fffdd0",
+      "aliases": [
+        "奶油色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "暖调白"
+    },
+    {
+      "name": "豆沙色",
+      "hex": "#b87b7b",
+      "aliases": [
+        "豆沙"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调红褐"
+    },
+    {
+      "name": "烟灰",
+      "hex": "#b0a9a0",
+      "aliases": [
+        "烟灰色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "偏暖的浅灰"
+    },
+    {
+      "name": "香槟金",
+      "hex": "#f7e7ce",
+      "aliases": [
+        "香槟色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "浅金"
+    },
+    {
+      "name": "玫瑰金",
+      "hex": "#b76e79",
+      "aliases": [],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "偏红的金色调"
+    },
+    {
+      "name": "星空蓝",
+      "hex": "#1b2a4a",
+      "aliases": [
+        "深夜蓝"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "极深蓝"
+    },
+    {
+      "name": "森林绿",
+      "hex": "#228b22",
+      "aliases": [
+        "森林"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "饱和深绿"
+    },
+    {
+      "name": "苔藓绿",
+      "hex": "#8a9a5b",
+      "aliases": [
+        "苔藓"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调黄绿"
+    },
+    {
+      "name": "松石绿",
+      "hex": "#40e0d0",
+      "aliases": [
+        "绿松石"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "青绿色"
+    },
+    {
+      "name": "天空蓝",
+      "hex": "#87ceeb",
+      "aliases": [
+        "天蓝"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "明亮的浅蓝"
+    },
+    {
+      "name": "婴儿蓝",
+      "hex": "#89cff0",
+      "aliases": [
+        "宝宝蓝"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "柔和浅蓝"
+    },
+    {
+      "name": "薰衣草紫",
+      "hex": "#b57edc",
+      "aliases": [
+        "薰衣草"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "淡紫"
+    },
+    {
+      "name": "丁香紫",
+      "hex": "#c8a2c8",
+      "aliases": [
+        "丁香色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "灰调浅紫"
+    },
+    {
+      "name": "柠檬黄",
+      "hex": "#fff44f",
+      "aliases": [
+        "柠檬色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "明亮浅黄"
+    },
+    {
+      "name": "砖红",
+      "hex": "#cb4154",
+      "aliases": [
+        "砖红色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "带灰的红"
+    },
+    {
+      "name": "南瓜色",
+      "hex": "#ff7518",
+      "aliases": [
+        "南瓜橙"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "暖橙"
+    },
+    {
+      "name": "蜜橘",
+      "hex": "#ffa500",
+      "aliases": [
+        "橘色",
+        "橙色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "标准橙"
+    },
+    {
+      "name": "樱花粉",
+      "hex": "#ffb7c5",
+      "aliases": [
+        "樱花色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "淡粉"
+    },
+    {
+      "name": "亚麻色",
+      "hex": "#faf0e6",
+      "aliases": [
+        "亚麻"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "极浅米白"
+    },
+    {
+      "name": "卡其色",
+      "hex": "#c3b091",
+      "aliases": [
+        "卡其"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "土黄灰"
+    },
+    {
+      "name": "橄榄绿",
+      "hex": "#808000",
+      "aliases": [
+        "橄榄"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "暗黄绿"
+    },
+    {
+      "name": "军绿",
+      "hex": "#4b5320",
+      "aliases": [
+        "军绿色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "深黄绿"
+    },
+    {
+      "name": "牛仔蓝",
+      "hex": "#1560bd",
+      "aliases": [
+        "牛仔色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "中等饱和蓝"
+    },
+    {
+      "name": "石墨灰",
+      "hex": "#383428",
+      "aliases": [
+        "石墨色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "深灰"
+    },
+    {
+      "name": "珍珠白",
+      "hex": "#eae0c8",
+      "aliases": [
+        "珍珠色"
+      ],
+      "category": "modern",
+      "approximate": true,
+      "source": "Coloroteca curated",
+      "note": "带暖调的浅白"
+    }
+  ]
+}

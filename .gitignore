@@ -1,0 +1,30 @@
+# User colour libraries live here and must never be committed. They are, by
+# design, whatever the user happened to import — frequently proprietary data
+# such as a Pantone or Freetone book. Redistributing them would be a licensing
+# problem, and this repository deliberately ships none of them.
+# NOTE: exclude the *contents*, not the directory itself. Git cannot re-include
+# a file once a parent directory has been excluded, so a trailing-slash rule
+# here would silently defeat the .gitkeep exception below.
+data/libraries/*
+!data/libraries/.gitkeep
+
+# Nothing that came out of a user's own colour books.
+*.ase
+*.acb
+*.aco
+*.act
+
+# Local build output
+dist/
+*.standalone.html
+
+# Agent workspace state (planning notes, local paths, tooling quirks). Useful
+# locally, noise in a public repository — and it records absolute paths from
+# whichever machine happened to be used.
+.workbuddy/
+
+# Tooling
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

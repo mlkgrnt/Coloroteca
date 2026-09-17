@@ -1,0 +1,39 @@
+{
+  "name": "coloroteca",
+  "version": "0.1.0",
+  "description": "Colour code matcher — match any RGB/HEX value to the nearest entries in a colour library you supply yourself.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "serve": "node tools/serve.mjs",
+    "build": "node tools/build-standalone.mjs",
+    "build:docs": "node tools/build-standalone.mjs --check && node tools/make-demo-libraries.mjs --check",
+    "check": "node tools/scan-protected.mjs",
+    "skill:install": "node tools/install-skill.mjs"
+  },
+  "keywords": [
+    "color",
+    "colour",
+    "color-matching",
+    "delta-e",
+    "ciede2000",
+    "swatch",
+    "palette",
+    "ase",
+    "acb",
+    "colour-library"
+  ],
+  "files": [
+    "core",
+    "parsers",
+    "web",
+    "skill",
+    "data",
+    "docs"
+  ]
+}

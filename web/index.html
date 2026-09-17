@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coloroteca — 色号匹配器</title>
+<meta name="description" content="输入任意色值，匹配色库中最接近的色号。色库由用户自行导入，本工具不内置任何受保护色库数据。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1a7 7 0 0 1 7 7H8z' fill='rgb(217,74,74)'/%3E%3Cpath d='M15 8a7 7 0 0 1-7 7V8z' fill='rgb(217,168,74)'/%3E%3Cpath d='M8 15a7 7 0 0 1-7-7h7z' fill='rgb(74,134,217)'/%3E%3Cpath d='M1 8a7 7 0 0 1 7-7v7z' fill='rgb(122,192,74)'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <h1>Coloroteca</h1>
+    <span class="brand-sub">色号匹配器</span>
+  </div>
+
+  <div class="topbar-actions">
+    <div class="field-inline">
+      <label for="library-select">色库</label>
+      <select id="library-select" title="选择用于匹配的色库"></select>
+    </div>
+    <button type="button" id="btn-libraries" class="btn">色库管理</button>
+    <button type="button" id="btn-import" class="btn">导入</button>
+    <button type="button" id="btn-settings" class="btn">设置</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ───────────────────────────── 输入区 ───────────────────────────── -->
+  <section class="panel input-panel" aria-labelledby="input-heading">
+    <h2 id="input-heading" class="panel-title">输入色值</h2>
+
+    <div class="mode-switch" role="tablist" aria-label="输入模式">
+      <button type="button" role="tab" id="tab-single" class="tab is-active" aria-selected="true">单色匹配</button>
+      <button type="button" role="tab" id="tab-batch" class="tab" aria-selected="false">批量匹配</button>
+    </div>
+
+    <!-- 单色 -->
+    <div id="view-single" class="view">
+      <div class="preview" id="preview-block">
+        <div class="preview-swatch" id="preview-swatch" aria-hidden="true"></div>
+        <div class="preview-readout">
+          <span class="preview-hex" id="preview-hex">#FF6B6B</span>
+          <span class="preview-note" id="preview-note">sRGB</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="in-hex">HEX</label>
+        <div class="row">
+          <input type="text" id="in-hex" value="#FF6B6B" spellcheck="false" autocomplete="off"
+                 inputmode="text" aria-describedby="hex-error">
+          <button type="button" id="btn-eyedropper" class="btn btn-icon" title="屏幕吸色（需要 Chromium 系浏览器）">吸管</button>
+          <label class="btn btn-icon picker-label" title="系统调色盘">
+            调色盘
+            <input type="color" id="in-picker" value="#ff6b6b">
+          </label>
+        </div>
+        <p class="hint error" id="hex-error" hidden></p>
+      </div>
+
+      <div class="control-group">
+        <span class="group-label">RGB</span>
+        <div class="channels" id="rgb-channels">
+          <div class="channel" data-channel="r">
+            <label for="in-r">R</label>
+            <input type="range" id="in-r-range" min="0" max="255" value="255">
+            <input type="number" id="in-r" min="0" max="255" value="255">
+          </div>
+          <div class="channel" data-channel="g">
+            <label for="in-g">G</label>
+            <input type="range" id="in-g-range" min="0" max="255" value="107">
+            <input type="number" id="in-g" min="0" max="255" value="107">
+          </div>
+          <div class="channel" data-channel="b">
+            <label for="in-b">B</label>
+            <input type="range" id="in-b-range" min="0" max="255" value="107">
+            <input type="number" id="in-b" min="0" max="255" value="107">
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="group-label">HSL</span>
+        <div class="channels" id="hsl-channels">
+          <div class="channel" data-channel="h">
+            <label for="in-h">H</label>
+            <input type="range" id="in-h-range" min="0" max="360" value="0">
+            <input type="number" id="in-h" min="0" max="360" value="0">
+          </div>
+          <div class="channel" data-channel="s">
+            <label for="in-s">S</label>
+            <input type="range" id="in-s-range" min="0" max="100" value="100">
+            <input type="number" id="in-s" min="0" max="100" value="100">
+          </div>
+          <div class="channel" data-channel="l">
+            <label for="in-l">L</label>
+            <input type="range" id="in-l-range" min="0" max="100" value="71">
+            <input type="number" id="in-l" min="0" max="100" value="71">
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="in-code">反查色号</label>
+        <div class="row">
+          <input type="text" id="in-code" placeholder="例如 185 C / DEMO 030-50 / 胭脂" spellcheck="false" autocomplete="off">
+          <button type="button" id="btn-lookup" class="btn">查询</button>
+        </div>
+        <div id="lookup-result" class="lookup-result" hidden></div>
+      </div>
+    </div>
+
+    <!-- 批量 -->
+    <div id="view-batch" class="view" hidden>
+      <div class="control-group">
+        <label for="in-batch">每行一个色值</label>
+        <textarea id="in-batch" rows="10" spellcheck="false"
+          placeholder="支持：#FF6B6B&#10;255,107,107&#10;rgb(255 107 107)&#10;hsl(0 100% 71%)&#10;brand-red: #ff6b6b;&#10;185 C #E4002B"></textarea>
+        <div class="row row-end">
+          <button type="button" id="btn-batch-run" class="btn btn-primary">批量匹配</button>
+          <button type="button" id="btn-batch-csv" class="btn">导出 CSV</button>
+        </div>
+        <p class="hint" id="batch-stat"></p>
+      </div>
+      <div id="batch-output" class="batch-output"></div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── 结果区 ───────────────────────────── -->
+  <section class="panel result-panel" aria-labelledby="result-heading">
+    <h2 id="result-heading" class="panel-title">匹配结果</h2>
+
+    <p class="notice" role="note">
+      屏幕色值近似匹配，实际指定色号请以官方色卡为准。
+    </p>
+
+    <div class="result-meta" id="result-meta"></div>
+
+    <div id="result-list" class="result-list" aria-live="polite"></div>
+
+    <div class="row row-end result-actions">
+      <button type="button" id="btn-copy-all" class="btn">复制全部</button>
+      <button type="button" id="btn-export-csv" class="btn">导出 CSV</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    本工具为独立项目，与 Pantone LLC 无隶属关系，未获其认可或赞助。
+    Coloroteca 不内置、不分发任何受保护的色库数据；所有色库均由用户自行导入，
+    匹配精度取决于所导入数据的质量。
+  </p>
+  <p class="footer-links">
+    <a href="../docs/CLF-FORMAT.md">色库格式（CLF）</a>
+    <span aria-hidden="true">·</span>
+    <a href="../docs/GETTING-LIBRARIES.md">如何合法获取色库</a>
+    <span aria-hidden="true">·</span>
+    <a href="../README.md">项目说明</a>
+  </p>
+</footer>
+
+<!-- ───────────────────────────── 导入对话框 ───────────────────────────── -->
+<dialog id="dlg-import" class="dialog">
+  <form method="dialog" class="dialog-form">
+    <h2>导入色库</h2>
+
+    <p class="dialog-note">
+      支持 <code>.clf.json</code>、<code>.ase</code>、<code>.acb</code>、<code>.gpl</code>
+      以及纯文本色值列表。你导入的色库只保存在本机浏览器中，不会被上传。
+    </p>
+
+    <div class="dropzone" id="dropzone">
+      <p>把文件拖到这里，或</p>
+      <div class="row row-center">
+        <label class="btn btn-primary">
+          选择文件
+          <input type="file" id="in-files" multiple hidden
+                 accept=".json,.ase,.acb,.gpl,.txt,.csv,.tsv,.css">
+        </label>
+        <label class="btn">
+          选择文件夹
+          <input type="file" id="in-folder" webkitdirectory directory multiple hidden>
+        </label>
+      </div>
+      <p class="hint">选择文件夹会读取其中所有受支持的色库文件，便于一次导入整个色库目录。</p>
+    </div>
+
+    <details class="paste-block">
+      <summary>或者直接粘贴色值列表</summary>
+      <textarea id="in-paste" rows="6" spellcheck="false"
+        placeholder="#FF6B6B&#10;#AABBCC&#10;185 C #E4002B"></textarea>
+      <div class="row row-end">
+        <label class="inline-field">
+          库名
+          <input type="text" id="in-paste-name" placeholder="Pasted colours">
+        </label>
+        <button type="button" id="btn-paste-import" class="btn btn-primary">导入这段文本</button>
+      </div>
+    </details>
+
+    <div id="import-report" class="import-report" hidden></div>
+
+    <menu class="dialog-actions">
+      <button value="close" class="btn">关闭</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- ─────────────────────────── 色库管理对话框 ─────────────────────────── -->
+<dialog id="dlg-libraries" class="dialog">
+  <form method="dialog" class="dialog-form">
+    <h2>色库管理</h2>
+    <p class="dialog-note">
+      下列色库保存在本机浏览器中。要与其他工具（例如命令行或 Agent Skill）共用，
+      请用「导出」下载 <code>.clf.json</code>，放进 <code>~/.coloroteca/libraries/</code>。
+    </p>
+    <div id="library-list" class="library-list"></div>
+    <menu class="dialog-actions">
+      <button value="close" class="btn">关闭</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- ───────────────────────────── 设置对话框 ───────────────────────────── -->
+<dialog id="dlg-settings" class="dialog">
+  <form method="dialog" class="dialog-form">
+    <h2>设置</h2>
+
+    <div class="settings-grid">
+      <label for="set-formula">色差公式</label>
+      <select id="set-formula">
+        <option value="CIEDE2000">CIEDE2000（推荐）</option>
+        <option value="CIE94">CIE94</option>
+        <option value="CIE76">CIE76</option>
+      </select>
+      <p class="hint">CIEDE2000 的恰可察觉差异约 1.0，CIE76 约 2.3，两者阈值不可互用。</p>
+
+      <label for="set-kl">kL 权重</label>
+      <select id="set-kl">
+        <option value="auto">自动（按色库体系：TCX 用纺织）</option>
+        <option value="1">图形艺术（kL = 1）</option>
+        <option value="2">纺织（kL = 2）</option>
+      </select>
+      <p class="hint">纺织品的纹理削弱了人眼对明度的敏感度，故纺织用 kL = 2。</p>
+
+      <label for="set-top">结果数量</label>
+      <input type="number" id="set-top" min="1" max="20" value="5">
+      <p class="hint">1–20 条。</p>
+
+      <label for="set-threshold">色差阈值</label>
+      <input type="number" id="set-threshold" min="0" step="0.5" placeholder="留空表示不限制">
+      <p class="hint">超过阈值的结果会被置灰，便于一眼看出哪些够接近。</p>
+    </div>
+
+    <menu class="dialog-actions">
+      <button type="button" id="btn-settings-reset" class="btn">恢复默认</button>
+      <button value="close" class="btn btn-primary">完成</button>
+    </menu>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
