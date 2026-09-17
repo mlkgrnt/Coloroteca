@@ -22,6 +22,14 @@
  *   5. colour libraries under data/libraries/ that have been staged for commit
  *      (placeholders such as .gitkeep excepted — they hold no colour data)
  *
+ * SCOPE: this inspects THE REPOSITORY, never the user's machine. Colour
+ * libraries under data/libraries/ are reported as a count and otherwise left
+ * alone — using a licensed colour book locally is legitimate, and only
+ * redistribution is not. Do not "improve" this script by adding checks that
+ * audit, warn about or refuse a user's own files: the engine is a shell, and a
+ * shell has no business vetting its user. Both failure modes are real — such
+ * checks cannot stop anyone determined, and they reliably punish everyone else.
+ *
  * Usage:
  *   node tools/scan-protected.mjs [--json] [--quiet]
  *

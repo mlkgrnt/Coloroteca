@@ -156,7 +156,8 @@ Coloroteca/
 │   └── libraries/         你的色库（.gitignore 排除）
 ├── tools/                 serve / build-standalone / install-skill /
 │                          make-demo-libraries / make-zh-colornames / scan-protected
-├── tests/                 101 项测试
+├── tests/                 103 项测试
+├── .github/workflows/     CI：跑测试 + 合规扫描
 └── docs/
 ```
 
@@ -167,13 +168,16 @@ Coloroteca/
 ## 开发
 
 ```bash
-npm test          # node --test，101 项
+npm test          # node --test，103 项
 npm run check     # 合规扫描：仓库里有没有不该有的色库数据
 npm run serve     # 本地服务
 npm run build     # 生成 dist/coloroteca.html 单文件版
+npm run build:docs # 校验生成物（示例色库、单文件包）是否与源码同步
 ```
 
 零运行时依赖，零构建步骤。唯一的「构建」是可选的单文件打包（给 `file://` 双击用，因为浏览器不允许 `file://` 页面加载 ES 模块）。
+
+CI 在 Node 20 / 22 / 24 上跑测试，并在 Node 22 上跑合规扫描与生成物校验。因为没有任何依赖，所以没有 lockfile，CI 里也就没有安装步骤。
 
 技术决策记录：
 
@@ -188,11 +192,19 @@ npm run build     # 生成 dist/coloroteca.html 单文件版
 这是本项目的立身之本，所以有工程手段兜着：
 
 - `.gitignore` 排除 `data/libraries/` 与所有 `.ase` / `.acb` / `.aco` / `.act`
-- `tools/scan-protected.mjs` 在提交前扫一遍，检测：色库二进制文件、非自由许可的 CLF、粘贴的批量色卡表特征、色名表来源越界、用户色库被误纳入版本管理
-- **该扫描器自身不含任何受保护色值清单**——放一份清单进仓库，本身就是把要拒绝的数据放进来；而且只能抓到它已经知道的色库。所以它检测的是**结构特征**，不是内容匹配
-- 每个色库必须标注 `source` 与 `license`，这两个字段在 CLF 里是必填的
+- `tools/scan-protected.mjs` 检测五类结构特征：色库二进制文件、非自由许可的 CLF、粘贴的批量色卡表、色名表来源越界、用户色库被误纳入版本管理
+- 每次 push 与 PR 都由 GitHub Actions 自动跑这个扫描和完整测试套件（见 `.github/workflows/ci.yml`）
+- **该扫描器自身不含任何受保护色值清单**——放一份清单进仓库，本身就是把要拒绝的数据放进来；而且它只能抓到已经知道的色库。所以它检测的是**结构特征**，不是内容匹配
 - 内置数据只有两份，许可分别是 CC0 与 MIT
 - 中文色名表刻意剔除带商标/品牌归属的色名（蒂芙尼蓝、克莱因蓝等），并有测试守着不让它们回来
+
+### 边界：我们审查仓库，不审查用户
+
+**扫描器只检查这个仓库里有什么，从不检查你机器上有什么。**
+
+你导进一份自己买了授权的 Pantone 色库、或者从任何来源拿到的色卡，工具都会照常读取、转换、匹配——不会拒绝、不会中止、不会拦着你说教。CLF 里的 `source` 与 `license` 是为了**记下事实**（以后你或别人看到这个文件，知道它不能再分发），不是为了设卡：缺了这两个字段只在校验时记一条警告，库照样能导入能用，网页上标一个琥珀色的 `proprietary` 徽章而已。
+
+理由很简单：**在自己电脑上使用一份合法获得的色卡不违法，再分发才违法。** 我们做的是壳子，壳子没有资格审查用户。这条路走歪了会同时毁掉两头——拦不住真想违规的人，却凭空给正常用户添堵。
 
 许可：**MIT**。见 [LICENSE](LICENSE)。
 

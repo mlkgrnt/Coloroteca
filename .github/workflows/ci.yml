@@ -1,0 +1,57 @@
+name: CI
+
+# Two things must never break:
+#   1. the engine is correct (tests)
+#   2. the repository ships no colour data we have no right to redistribute
+#
+# Note there is no install step: the project has zero runtime and dev
+# dependencies, so `npm ci` would have nothing to do and no lockfile exists.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: tests (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 20 is the floor we claim in package.json; 24 is current. Quoted so
+        # YAML does not read them as numbers — a version like 20.10 would
+        # otherwise become the float 20.1.
+        node: ['20', '22', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run the test suite
+        run: npm test
+
+  compliance:
+    name: repository compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Fails if a colour book, a non-permissive CLF, a pasted swatch table or
+      # a user library has been committed. This is the guard rail behind the
+      # project's central promise — it only ever inspects the repository, never
+      # anything the user has on their own machine.
+      - name: Check that the bundled data is redistributable
+        run: npm run check
+
+      # Demo libraries and the single-file bundle are generated. If a change
+      # left them stale, the shipped artifact would not match the source.
+      - name: Check that generated artifacts are current
+        run: npm run build:docs
